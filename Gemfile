@@ -39,3 +39,6 @@ group :development, :test do
   
 end
 
+group :test do
+  gem "rspec_junit_formatter"  # Needed to output test results in XML for CircleCI
+end
