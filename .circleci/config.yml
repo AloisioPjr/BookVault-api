@@ -36,22 +36,14 @@ jobs:
             - .
 
   test:
-  executor: ruby-executor
-  steps:
-    - attach_workspace:
-        at: .
-    - run:
-        name: Run RSpec with JUnit formatter
-        command: |
-          mkdir -p test-results/rspec
-          bundle exec rspec \
-            --format RspecJunitFormatter \
-            --out test-results/rspec/rspec.xml \
-            --format progress
-    - store_test_results:
-        path: test-results
-
-
+    executor: ruby-executor
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Run RSpec tests
+          command: bundle exec rspec
+          
 
 workflows:
   version: 2
