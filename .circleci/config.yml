@@ -46,6 +46,10 @@ jobs:
             bundle config set --local path 'vendor/bundle'
             bundle install
       - run:
+          name: Prepare database
+          command: |
+            bundle exec rails db:create db:migrate
+      - run:
           name: Run RSpec with JUnit formatter
           command: |
             mkdir -p test-results/rspec
@@ -55,6 +59,7 @@ jobs:
               --format progress
       - store_test_results:
           path: test-results
+
 
 
 workflows:
