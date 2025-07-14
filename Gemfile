@@ -37,3 +37,6 @@ group :development, :test do
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
 end
+group :test do
+  gem 'rspec_junit_formatter'
+end
