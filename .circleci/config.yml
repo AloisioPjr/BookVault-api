@@ -1,0 +1,54 @@
+version: 2.1
+
+executors:
+  ruby-executor:
+    docker:
+      - image: cimg/ruby:3.4.4
+        environment:
+          RAILS_ENV: test
+      - image: cimg/postgres:14.10
+        environment:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: bookvault_test
+          POSTGRES_PASSWORD: password
+    working_directory: ~/bookvault-api
+
+jobs:
+  setup:
+    executor: ruby-executor
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: |
+            gem install bundler
+            bundle install --jobs=4 --retry=3
+      - run:
+          name: Setup database
+          command: |
+            cp config/database.yml config/database.yml.bak
+            sed -i 's/username:.*/username: postgres/' config/database.yml
+            sed -i 's/password:.*/password: password/' config/database.yml
+            bundle exec rails db:create db:schema:load
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
+
+  test:
+    executor: ruby-executor
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: Run RSpec tests
+          command: bundle exec rspec
+
+workflows:
+  version: 2
+  test_and_build:
+    jobs:
+      - setup
+      - test:
+          requires:
+            - setup
