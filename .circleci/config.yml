@@ -41,6 +41,11 @@ jobs:
       - attach_workspace:
           at: .
       - run:
+          name: Install gems
+          command: |
+            bundle config set --local path 'vendor/bundle'
+            bundle install
+      - run:
           name: Run RSpec with JUnit formatter
           command: |
             mkdir -p test-results/rspec
@@ -50,6 +55,7 @@ jobs:
               --format progress
       - store_test_results:
           path: test-results
+
 
 workflows:
   version: 2
