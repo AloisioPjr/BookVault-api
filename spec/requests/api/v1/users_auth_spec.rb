@@ -101,3 +101,4 @@ RSpec.describe 'User Registration and Login', type: :request do
     end
   end
 end
+ #  bundle exec rspec spec/requests/api/v1/users_auth_spec.rb

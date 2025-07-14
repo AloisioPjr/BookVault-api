@@ -23,4 +23,4 @@ RSpec.describe "Api::V1::Reservations", type: :request do
   end
 
 end
-# # bundle exec rspec spec/requests/api/v1/reservations_spec.rb
+# bundle exec rspec spec/requests/api/v1/reservations_spec.rb

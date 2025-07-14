@@ -30,3 +30,4 @@ RSpec.describe "Api::V1::Loans", type: :request do
   end
 
 end
+# bundle exec rspec spec/requests/api/v1/loans_spec.rb
