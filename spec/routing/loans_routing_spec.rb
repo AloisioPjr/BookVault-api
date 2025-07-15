@@ -31,3 +31,4 @@ RSpec.describe Api::V1::LoansController, type: :routing do
     end
   end
 end
+# bundle exec rspec spec/routing/loans_routing_spec.rb

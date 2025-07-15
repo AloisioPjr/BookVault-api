@@ -27,3 +27,4 @@ RSpec.describe Api::V1::BooksController, type: :routing do
     end
   end
 end
+# bundle exec rspec spec/routing/books_routing_spec.rb

@@ -125,3 +125,4 @@ RSpec.describe "/reservations", type: :request do
     end
   end
 end
+# bundle exec rspec spec/requests/reservations_spec.rb

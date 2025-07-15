@@ -15,3 +15,4 @@ RSpec.describe Api::V1::ReservationsController, type: :routing do
     end
   end
 end
+# bundle exec rspec spec/routing/reservations_routing_spec.rb
