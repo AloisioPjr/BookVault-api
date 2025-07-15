@@ -1,30 +1,17 @@
 require "rails_helper"
 
-RSpec.describe ReservationsController, type: :routing do
+RSpec.describe Api::V1::ReservationsController, type: :routing do
   describe "routing" do
     it "routes to #index" do
-      expect(get: "/reservations").to route_to("reservations#index")
+      expect(get: "/api/v1/reservations").to route_to("api/v1/reservations#index")
     end
-
-    it "routes to #show" do
-      expect(get: "/reservations/1").to route_to("reservations#show", id: "1")
-    end
-
 
     it "routes to #create" do
-      expect(post: "/reservations").to route_to("reservations#create")
-    end
-
-    it "routes to #update via PUT" do
-      expect(put: "/reservations/1").to route_to("reservations#update", id: "1")
-    end
-
-    it "routes to #update via PATCH" do
-      expect(patch: "/reservations/1").to route_to("reservations#update", id: "1")
+      expect(post: "/api/v1/reservations").to route_to("api/v1/reservations#create")
     end
 
     it "routes to #destroy" do
-      expect(delete: "/reservations/1").to route_to("reservations#destroy", id: "1")
+      expect(delete: "/api/v1/reservations/1").to route_to("api/v1/reservations#destroy", id: "1")
     end
   end
 end
