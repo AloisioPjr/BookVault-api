@@ -27,7 +27,6 @@ gem "bootsnap", require: false
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false
 
-gem 'devise' # Use Devise for authentication 
 # gem 'devise-jwt' # Use Devise JWT for token-based authentication
 gem 'rspec-rails', group: [:development, :test] # Use RSpec for testing 
 gem "thruster", require: false
@@ -42,3 +41,5 @@ end
 group :test do
   gem "rspec_junit_formatter"  # Needed to output test results in XML for CircleCI
 end
+
+gem "bcrypt", "~> 3.1"

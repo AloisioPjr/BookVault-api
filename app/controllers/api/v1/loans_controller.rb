@@ -1,5 +1,5 @@
 class Api::V1::LoansController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user
   before_action :set_loan, only: [:update, :return]
   before_action :authenticate_admin!, only: [:update]
 
