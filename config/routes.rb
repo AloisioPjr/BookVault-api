@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       # API versioning
       post 'login', to: 'authentication#login'
       post 'register', to: 'registrations#create'
+      delete 'logout', to: 'authentication#logout'
 
       resources :books
       resources :loans do

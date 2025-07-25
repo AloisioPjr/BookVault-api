@@ -27,8 +27,8 @@ module BookvaultApi
     config.api_only = true
 
     # Add back required middleware for Devise session/cookie auth
-    #config.middleware.use ActionDispatch::Cookies
-    #config.middleware.use ActionDispatch::Session::CookieStore
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
     #config.middleware.use ActionDispatch::Flash
     #config.middleware.use Rack::MethodOverride
     #config.middleware.use ActionDispatch::ContentSecurityPolicy::Middleware
