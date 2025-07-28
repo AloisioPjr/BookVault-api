@@ -28,7 +28,7 @@ gem "bootsnap", require: false
 gem "kamal", require: false
 
 # gem 'devise-jwt' # Use Devise JWT for token-based authentication
-gem 'rspec-rails', group: [:development, :test] # Use RSpec for testing 
+gem 'rspec-rails', group: [:development, :test] # Use RSpec for testing 3
 gem "thruster", require: false
 
 group :development, :test do
