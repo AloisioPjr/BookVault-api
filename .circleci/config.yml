@@ -66,18 +66,28 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:7kBg5C/ATWfihqFyqK54rA/Uou0eBaG814/vI144JiU"  
+            - "SHA256:7kBg5C/ATWfihqFyqK54rA/Uou0eBaG814/vI144JiU"
       - run:
-          name: Deploy to EC2
+          name: Deploy Backend and Frontend
           command: |
             ssh -o StrictHostKeyChecking=no ubuntu@44.213.20.112 \<< 'EOF'
+              echo " Deploying BookVault API..."
               cd ~/BookVault-api
               git pull origin main
               bundle install --without development test
               RAILS_ENV=production bin/rails db:migrate
               RAILS_ENV=production bin/rails assets:precompile
               sudo systemctl restart bookvault
+
+              echo " Deploying BookVault Frontend..."
+              cd ~/BookVault-Frontend
+              git pull origin main
+              export VITE_API_BASE_URL=http://44.213.20.112/api/v1
+              npm install
+              npm run build
+              sudo systemctl restart nginx
             EOF
+
 
 workflows:
   version: 2
