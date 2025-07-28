@@ -70,7 +70,7 @@ jobs:
       - run:
           name: Deploy to EC2
           command: |
-            ssh -o StrictHostKeyChecking=no ubuntu@44.213.20.112 << 'EOF'
+            ssh -o StrictHostKeyChecking=no ubuntu@44.213.20.112 \<< 'EOF'
               cd ~/BookVault-api
               git pull origin main
               bundle install --without development test
