@@ -77,7 +77,7 @@ jobs:
               bundle install --without development test
               RAILS_ENV=production bin/rails db:migrate
               RAILS_ENV=production bin/rails assets:precompile
-              sudo systemctl restart bookvault
+              sudo systemctl restart bookvault-api
 
               echo " Deploying BookVault Frontend..."
               cd ~/BookVault-Frontend
