@@ -60,7 +60,24 @@ jobs:
       - store_test_results:
           path: test-results
 
-
+  deploy:
+    docker:
+      - image: cimg/ruby:3.4.4
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:7kBg5C/ATWfihqFyqK54rA/Uou0eBaG814/vI144JiU"  
+      - run:
+          name: Deploy to EC2
+          command: |
+            ssh -o StrictHostKeyChecking=no ubuntu@44.213.20.112 << 'EOF'
+              cd ~/BookVault-api
+              git pull origin main
+              bundle install --without development test
+              RAILS_ENV=production bin/rails db:migrate
+              RAILS_ENV=production bin/rails assets:precompile
+              sudo systemctl restart bookvault
+            EOF
 
 workflows:
   version: 2
@@ -70,3 +87,6 @@ workflows:
       - test:
           requires:
             - setup
+      - deploy:
+          requires:
+            - test
