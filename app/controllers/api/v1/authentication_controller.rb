@@ -8,7 +8,7 @@ class Api::V1::AuthenticationController < ApplicationController
     email = params[:email] || params.dig(:user, :email)
     password = params[:password] || params.dig(:user, :password)
 
-    # Look up the user by email
+    # Look up the user by email 
     user = User.find_by(email: email)
 
     # Authenticate using has_secure_password
