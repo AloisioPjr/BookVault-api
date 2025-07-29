@@ -81,6 +81,8 @@ jobs:
 
               echo " Deploying BookVault Frontend..."
               cd ~/BookVault-Frontend
+              git reset --hard
+              git clean -fd
               git pull origin main
               export VITE_API_BASE_URL=http://44.213.20.112/api/v1
               npm install
